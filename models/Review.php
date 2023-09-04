@@ -1,7 +1,7 @@
 <?php namespace MoonWalkerz\Trustpilot\Models;
 
 use Model;
-
+use DB;
 /**
  * Model
  */
@@ -56,21 +56,17 @@ class Review extends Model
     public static $allowedSortingOptions = [
         'title asc' => 'Title (ascending)',
         'title desc' => 'Title (descending)',
-        'created_at asc' => 'Created (ascending)',
-        'created_at desc' => 'Created (descending)',
-        'updated_at asc' => 'Updated (ascending)',
-        'updated_at desc' => 'Updated (descending)',
-        'published_at asc' => 'Published (ascending)',
-        'published_at desc' => 'Published (descending)',
-        'random' => 'Random'
+        'date asc' => 'Date Created (ascending)',
+        'date desc' => 'Date Created (descending)',
+        'rand' => 'Random'
     ];
   /**
-     * Lists posts for the front end
+     * Lists reviews for the front end
      *
      * @param        $query
      * @param  array $options Display options
      *
-     * @return Post
+     * @return Reviews
      */
     public function scopeListFrontEnd($query, $options)
     {
@@ -112,4 +108,34 @@ class Review extends Model
         return $query->paginate($perPage, $page);
     }
 
+    public function getRatingStarsAttribute() {
+        return $this->generateStarRating($this->rating);
+    }
+    public function getBusinessRatingStarsAttribute() {
+        return $this->generateStarRating($this->business_stars);
+    }
+    
+    public function generateStarRating($rating) {
+        $output = '';
+        $fullStars = floor($rating);
+        $halfStar = ($rating - $fullStars) >= 0.5;
+        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+    
+        // Generate full stars
+        for ($i = 1; $i <= $fullStars; $i++) {
+            $output .= '<span class="star full-star">&#9733;</span>';
+        }
+    
+        // Generate half star if necessary
+        if ($halfStar) {
+            $output .= '<span class="star half-star">&#9733;&#189;</span>';
+        }
+    
+        // Generate empty stars
+        for ($i = 1; $i <= $emptyStars; $i++) {
+            $output .= '<span class="star empty-star">&#9734;</span>';
+        }
+    
+        return $output;
+    }
 }

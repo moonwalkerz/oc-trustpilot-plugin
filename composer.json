@@ -1,11 +1,29 @@
 {
-    "name": "moonwalkerz/trustpilot-plugin",
+    "name": "moonwalkerz/oc-trustpilot-plugin",
+    "description": "Trustpilot Plugin for October CMS",
     "type": "october-plugin",
-    "description": "No description provided yet...",
     "require": {
         "composer/installers": "~1.0",
         "guzzlehttp/guzzle": "^7.0"
     },
+    "keywords": [
+        "october",
+        "cms",
+      "trustpilot",
+      "review",
+      "plugin"
+      ],
+      "license": "MIT",
+      "authors": [
+        {
+            "name": "Alain Martini",
+            "email": "alain@moonwalkerz.dev"
+        },
+        {
+          "name": "Nicolò Verginella",
+          "email": "webmaster@moonwalkerz.dev"
+      }
+    ],
     "config": {
         "allow-plugins": {
             "composer/installers": true

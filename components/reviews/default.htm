@@ -1,6 +1,33 @@
 <section class="trustpilot-list">
-{% for review in reviews %}
-<div class="flex items-start border-b border-gray-200 pb-2 mb-2">
+  {% if(showBusinessUnit)%}
+  <div class="flex items-start border-b border-gray-200 py-2 mb-2">
+    <div class="flex flex-col w-36">
+      {% if(reviews.0.business_image)%}
+      <img class="pb-2" src="{{reviews.0.business_image}}" alt="{{reviews.0.business_name}}">
+      {% endif%}
+      <div class="font-bold w-full text-center">
+        {{ reviews.0.business_name}}
+      </div>
+    </div>
+    <dl class="w-full pl-5 divide-y divide-gray-100">
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt>{{ 'moonwalkerz.trustpilot::lang.plugin.reviews'|trans}}</dt>
+        <dd>{{ reviews.0.business_reviews}}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt>{{ 'moonwalkerz.trustpilot::lang.plugin.trustscore'|trans}}</dt>
+        <dd>{{ reviews.0.business_trustscore}}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt>{{ 'moonwalkerz.trustpilot::lang.plugin.stars'|trans}}</dt>
+        <dd>{{ reviews.0.business_rating_stars|raw}}</dd>
+      </div>
+    </dl>
+  </div>
+  {% endif%}
+
+  {% for review in reviews %}
+  <div class="flex items-start border-b border-gray-200 pb-2 mb-2">
     <div class="flex flex-col w-36">
       {% if (review.consumer_avatar) %}
       <img class="w-10 h-10 rounded-full mx-auto" src="{{review.consumer_avatar}}" alt="{{review.consumer_name}}">
@@ -12,6 +39,42 @@
       <div class="text-xl font-bold">{{review.title}}</div>
       <div class="w-full">{{review.text}}</div>
     </div>
-</div>
-{% endfor %}
+  </div>
+  {% endfor %}
+
+
+  {% if paginate %}
+
+  {% if reviews.lastPage > 1 %}
+  <nav class="pagination-wrapper" aria-label="Navigazione della pagina">
+    <ul class="pagination">
+
+      {% if reviews.currentPage > 1 %}
+      <li class="page-item">
+        <a class="page-link"
+          href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (reviews.currentPage-1) }) }}">
+          < </a>
+      </li>
+      {% endif %}
+
+      {% for page in 1..reviews.lastPage %}
+      <li class="page-item {{ reviews.currentPage == page ? 'active' : null }}">
+        <a class="page-link" href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): page }) }}">{{ page }}</a>
+      </li>
+      {% endfor %}
+
+      {% if reviews.lastPage > reviews.currentPage %}
+      <li class="page-item">
+        <a class="page-link"
+          href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (reviews.currentPage+1) }) }}">
+          >
+        </a>
+      </li>
+
+      {% endif %}
+
+    </ul>
+  </nav>
+  {% endif %}
+  {% endif %}
 </section>

@@ -25,4 +25,6 @@ class Reviews extends Controller
         Artisan::call('trustpilot:sync');
         return $this->listRefresh();
     }
+
+
 }
