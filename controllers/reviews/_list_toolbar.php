@@ -13,4 +13,7 @@
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')) ?>
     </button>
+    <button class="btn btn-danger" type="button" data-request="onSync">
+    <?= e(trans('moonwalkerz.trustpilot::lang.settings.sync_button')) ?>
+    </button>
 </div>

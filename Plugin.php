@@ -3,6 +3,7 @@
 use Backend;
 use System\Classes\PluginBase;
 use MoonWalkerz\Trustpilot\Models\Settings;
+use Artisan;
 
 /**
  * Plugin Information File

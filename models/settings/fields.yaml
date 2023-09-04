@@ -14,7 +14,13 @@ fields:
         span: left
         type: dropdown
         options:
+            0: moonwalkerz.trustpilot::lang.settings.schedule_0
             1: moonwalkerz.trustpilot::lang.settings.schedule_1
             2: moonwalkerz.trustpilot::lang.settings.schedule_2
             3: moonwalkerz.trustpilot::lang.settings.schedule_3
         comment: moonwalkerz.trustpilot::lang.settings.schedule_comment
+    sync:
+        label: moonwalkerz.trustpilot::lang.settings.sync
+        span: auto
+        type: MoonWalkerz\Trustpilot\FormWidgets\SyncButton
+        

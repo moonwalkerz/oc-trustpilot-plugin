@@ -1,32 +1,38 @@
 columns:
-    tp_id:
-        label: tp_id
-        type: text
-        sortable: true
-    title:
-        label: title
-        type: text
-        searchable: true
-        sortable: true
-    date:
-        label: date
-        type: text
-        sortable: true
     visible:
-        label: visible
-        type: text
         sortable: true
-    rating:
-        label: rating
-        type: number
+        label: moonwalkerz.trustpilot::lang.settings.visible
+        type: inetis-list-switch
+        icon: true
+        titleTrue: 'Unpublish item'
+        titleFalse: 'Publish item'
+        textTrue: 'Published'
+        textFalse: 'Unpublished'
+    date:
+        label: moonwalkerz.trustpilot::lang.settings.date
+        type: date
         sortable: true
     consumer_name:
-        label: consumer_name
+        label: moonwalkerz.trustpilot::lang.settings.consumer_name
         type: text
     consumer_reviews:
-        label: consumer_reviews
+        label: moonwalkerz.trustpilot::lang.settings.consumer_reviews
         type: number
         sortable: true
     consumer_avatar:
-        label: consumer_avatar
+        label: moonwalkerz.trustpilot::lang.settings.consumer_avatar
+        type: partial        
+    rating:
+        label: moonwalkerz.trustpilot::lang.settings.rating
+        type: partial
+        sortable: true
+    title:
+        label: moonwalkerz.trustpilot::lang.settings.title
         type: text
+        searchable: true
+        sortable: true
+    tp_id:
+        hide: true
+        label: moonwalkerz.trustpilot::lang.settings.tp_id
+        type: text
+        sortable: true

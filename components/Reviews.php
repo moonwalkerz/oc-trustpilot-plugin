@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use MoonWalkerz\Trustpilot\Models\Review;
+use Artisan;
 /**
  * Trustpilot Component
  *
@@ -11,7 +12,23 @@ class Reviews extends ComponentBase
 {
 
     public $reviews;
+    /**
+     * Message to display when there are no messages.
+     * @var string
+     */
+    public $noReviewsMessage;
+     /**
+     * Reference to the page name for linking to posts.
+     * @var string
+     */
+    public $reviewPage;
 
+    public $pageParam;
+     /**
+     * If the post list should be ordered by another attribute.
+     * @var string
+     */
+    public $sortOrder;
     public function componentDetails()
     {
         return [
@@ -26,7 +43,32 @@ class Reviews extends ComponentBase
     public function defineProperties()
     {
         return [
-
+            'pageNumber' => [
+                'title'       => 'moonwalkerz.press::lang.settings.page_number',
+                'description' => 'moonwalkerz.press::lang.settings.page_number_description',
+                'type'        => 'string',
+                'default'     => '{{ :page }}',
+            ],
+            'reviewsPerPage' => [
+                'title'             => 'moonwalkerz.press::lang.settings.reviews_per_page',
+                'type'              => 'string',
+                'validationPattern' => '^[0-9]+$',
+                'validationMessage' => 'moonwalkerz.press::lang.settings.reviews_per_page_validation',
+                'default'           => '10',
+            ],
+            'noReviewsMessage' => [
+                'title'        => 'moonwalkerz.press::lang.settings.no_reviews',
+                'description'  => 'moonwalkerz.press::lang.settings.no_reviews_description',
+                'type'         => 'string',
+                'default'      => 'No posts found',
+                'showExternalParam' => false
+            ],
+            'sortOrder' => [
+                'title'       => 'moonwalkerz.trustpilot::lang.properties.order_by',
+                'description' => 'moonwalkerz.trustpilot::lang.properties.order_by_desc',
+                'type'        => 'dropdown',
+                'default'     => 'date desc'
+            ],
             'greaterThan' => [
                 'title' => 'moonwalkerz.trustpilot::lang.properties.greater_than',
                 'description' => 'moonwalkerz.trustpilot::lang.properties.greater_than_desc',
@@ -39,19 +81,26 @@ class Reviews extends ComponentBase
                 'default' => false,
                 
             ],
-            'orderBy' => [
-                'title'=> 'moonwalkerz.trustpilot::lang.properties.order_by',
-                'description'=> 'moonwalkerz.trustpilot::lang.properties.order_by_desc',
-                'type' => 'dropdown'
-            ]
+            
         ];
     }
 
     public function onRun() {
+        $this->addCss('assets/trustpilot.css');
+        $this->prepareVars();
+        $this->reviews = $this->page['reviews'] = $this->listReviews();
 
-        $reviews = Review::all();
-ray($reviews);
-        $this->reviews = $this->page['reviews'] = $reviews->map(function($review) {
+        /*
+         * If the page number is not valid, redirect
+         */
+        if ($pageNumberParam = $this->paramName('pageNumber')) {
+            $currentPage = $this->property('pageNumber');
+
+            if ($currentPage > ($lastPage = $this->reviews->lastPage()) && $currentPage > 1)
+                return Redirect::to($this->currentPageUrl([$pageNumberParam => $lastPage]));
+        }
+
+        $this->reviews = $this->page['reviews'] = $this->reviews->map(function($review) {
             return [
                 'id'=> $review->id,
                 'title'=> $review->title,
@@ -85,6 +134,24 @@ $r->rating = $review['rating'];
             $r->business_image = $business['profileImageUrl'];
             */
     }
+    protected function prepareVars()
+    {
+        $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
+        $this->noReviewsMessage = $this->page['noReviewsMessage'] = $this->property('noReviewsMessage');
+    }
+
+    protected function listReviews()
+    {
+       
+        $reviews = Review::listFrontEnd([
+            'page'       => $this->property('pageNumber'),
+            'sort'       => $this->property('sortOrder'),
+            'perPage'    => $this->property('reviewsPerPage'),
+        ]);
+
+
+        return $reviews;
+    }
 
     public function generateStarRating($rating) {
         $output = '';
@@ -109,7 +176,6 @@ $r->rating = $review['rating'];
     
         return $output;
     }
-
 
 
 }
