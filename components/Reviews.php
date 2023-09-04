@@ -111,7 +111,6 @@ class Reviews extends ComponentBase
         $this->prepareVars();
         $this->reviews = $this->page['reviews'] = $this->listReviews();
 
-        ray($this->reviews);
         /*
          * If the page number is not valid, redirect
          */
@@ -121,27 +120,6 @@ class Reviews extends ComponentBase
             if ($currentPage > ($lastPage = $this->reviews->lastPage()) && $currentPage > 1)
                 return Redirect::to($this->currentPageUrl([$pageNumberParam => $lastPage]));
         }
-/*
-         $this->page['reviews'] = $this->reviews->map(function($review) {
-            return [
-                'id'=> $review->id,
-                'title'=> $review->title,
-                'text'=> $review->text,
-                'rating' => $review->rating,
-                'rating_stars'=> $this->generateStarRating($review->rating),
-                'language' => $review->language,
-                'consumer_id' => $review->consumer_id,
-                'consumer_name' => $review->consumer_name,
-                'consumer_reviews' => $review->consumer_reviews,
-                'consumer_avatar' => $review->consumer_avatar,
-                'business_reviews' => $review->business_reviews,
-                'business_trustscore' => $review->business_trustscore,
-                'business_stars' => $this->generateStarRating($review->business_stars),
-                'business_name' => $review->business_name,
-                'business_image' => $review->business_image
-            ];
-        });
-*/
     }
     protected function prepareVars()
     {
