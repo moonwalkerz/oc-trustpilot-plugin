@@ -1,0 +1,10 @@
+name: Reviews
+form: $/moonwalkerz/trustpilot/models/review/fields.yaml
+modelClass: MoonWalkerz\Trustpilot\Models\Review
+defaultRedirect: moonwalkerz/trustpilot/reviews
+create:
+    redirect: 'moonwalkerz/trustpilot/reviews/update/:id'
+    redirectClose: moonwalkerz/trustpilot/reviews
+update:
+    redirect: moonwalkerz/trustpilot/reviews
+    redirectClose: moonwalkerz/trustpilot/reviews

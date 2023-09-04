@@ -1,0 +1,19 @@
+v1.0.1: 'First version of trustpilot'
+v1.0.2:
+    - 'Created table moonwalkerz_trustpilot_reviews'
+    - builder_table_create_moonwalkerz_trustpilot_reviews.php
+v1.0.3:
+    - 'Updated table moonwalkerz_trustpilot_reviews'
+    - builder_table_update_moonwalkerz_trustpilot_reviews.php
+v1.0.4:
+    - 'Updated table moonwalkerz_trustpilot_reviews'
+    - builder_table_update_moonwalkerz_trustpilot_reviews_2.php
+v1.0.5:
+    - 'Updated table moonwalkerz_trustpilot_reviews'
+    - builder_table_update_moonwalkerz_trustpilot_reviews_3.php
+v1.0.6:
+    - 'Updated table moonwalkerz_trustpilot_reviews'
+    - builder_table_update_moonwalkerz_trustpilot_reviews_4.php
+v1.0.7:
+    - 'Updated table moonwalkerz_trustpilot_reviews'
+    - builder_table_update_moonwalkerz_trustpilot_reviews_5.php

@@ -1,0 +1,20 @@
+fields:
+    url:
+        span: auto
+        type: text
+        label: moonwalkerz.trustpilot::lang.settings.url
+        comment: moonwalkerz.trustpilot::lang.settings.url_comment
+    tp_url:
+        span: auto
+        type: text
+        label: moonwalkerz.trustpilot::lang.settings.tp_url
+        comment: moonwalkerz.trustpilot::lang.settings.tp_url_comment
+    schedule:
+        label: moonwalkerz.trustpilot::lang.settings.schedule
+        span: left
+        type: dropdown
+        options:
+            1: moonwalkerz.trustpilot::lang.settings.schedule_1
+            2: moonwalkerz.trustpilot::lang.settings.schedule_2
+            3: moonwalkerz.trustpilot::lang.settings.schedule_3
+        comment: moonwalkerz.trustpilot::lang.settings.schedule_comment

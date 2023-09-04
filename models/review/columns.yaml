@@ -1,0 +1,32 @@
+columns:
+    tp_id:
+        label: tp_id
+        type: text
+        sortable: true
+    title:
+        label: title
+        type: text
+        searchable: true
+        sortable: true
+    date:
+        label: date
+        type: text
+        sortable: true
+    visible:
+        label: visible
+        type: text
+        sortable: true
+    rating:
+        label: rating
+        type: number
+        sortable: true
+    consumer_name:
+        label: consumer_name
+        type: text
+    consumer_reviews:
+        label: consumer_reviews
+        type: number
+        sortable: true
+    consumer_avatar:
+        label: consumer_avatar
+        type: text

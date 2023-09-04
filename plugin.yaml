@@ -1,0 +1,16 @@
+plugin:
+    name: 'moonwalkerz.trustpilot::lang.plugin.name'
+    description: 'moonwalkerz.trustpilot::lang.plugin.description'
+    author: MoonWalkerz
+    icon: oc-icon-star
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: TrustPilot
+        url: moonwalkerz/trustpilot/reviews
+        icon: icon-star
+        sideMenu:
+            side-menu-item:
+                label: Reviews
+                url: moonwalkerz/trustpilot/reviews
+                icon: icon-list

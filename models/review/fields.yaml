@@ -1,0 +1,41 @@
+fields:
+    tp_id:
+        label: 'Tp id'
+        span: auto
+        type: text
+    title:
+        label: Title
+        span: auto
+        type: text
+    date:
+        label: Date
+        span: auto
+        type: datepicker
+    text:
+        label: Text
+        span: auto
+        type: textarea
+    visible:
+        label: Visible
+        span: auto
+        type: checkbox
+    rating:
+        label: Rating
+        span: auto
+        type: number
+    consumer_id:
+        label: 'Consumer id'
+        span: auto
+        type: text
+    consumer_name:
+        label: 'Consumer name'
+        span: auto
+        type: text
+    consumer_reviews:
+        label: 'Consumer reviews'
+        span: auto
+        type: number
+    consumer_avatar:
+        label: 'Consumer avatar'
+        span: auto
+        type: text
