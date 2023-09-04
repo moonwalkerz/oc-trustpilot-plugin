@@ -77,7 +77,7 @@ if ($scriptNodeList->length > 0) {
     
     
     $this->data = json_decode($scriptContent, true);
-    ray($this->data);
+    
 } else {
     echo "Script with ID '__NEXT_DATA__' not found.";
 }
@@ -86,7 +86,7 @@ if ($scriptNodeList->length > 0) {
         $reviews = $this->data['props']['pageProps']['reviews'];
 
 
-        ray($reviews);
+    
         $this->output->writeln('Trustpilot import...');
         $this->output->writeln('Number of reviews: '.count($reviews));
 
