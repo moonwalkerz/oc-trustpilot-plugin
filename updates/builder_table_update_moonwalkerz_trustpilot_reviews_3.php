@@ -10,8 +10,8 @@ class BuilderTableUpdateMoonWalkerzTrustpilotReviews3 extends Migration
         Schema::table('moonwalkerz_trustpilot_reviews', function($table)
         {
             $table->integer('business_reviews')->nullable()->default(0);
-            $table->decimal('business_trustscore', 10, 0)->nullable()->default(0);
-            $table->decimal('business_stars', 10, 0)->nullable()->default(0);
+            $table->decimal('business_trustscore', 10, 1)->nullable()->default(0);
+            $table->decimal('business_stars', 10, 1)->nullable()->default(0);
             $table->string('business_name')->nullable();
             $table->string('business_image')->nullable();
         });

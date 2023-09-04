@@ -12,6 +12,8 @@ use Artisan;
  */
 class Plugin extends PluginBase
 {
+    public $require = ['Inetis.ListSwitch'];
+
     /**
      * pluginDetails about this plugin.
      */
