@@ -1,5 +1,5 @@
 {
-    "name": "moonwalkerz/oc-trustpilot-plugin",
+    "name": "moonwalkerz/trustpilot-plugin",
     "description": "Trustpilot Plugin for October CMS",
     "type": "october-plugin",
     "require": {
