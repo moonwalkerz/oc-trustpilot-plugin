@@ -2,10 +2,15 @@
 
 # Trustpilot | October CMS
 
-
 MoonWalkerz presents "Trustpilot"! A simple Trustpilot plugin designed for October CMS. With this plugin, you can effortlessly import your Trustpilot reviews and display your Business Unit information on your website. What more do you want?
 
 WE HAVE JUST CODED THIS PLUGIN. FOR BUGS OR FEEDBACK, PLEASE CONTACT US ON TELEGRAM. KINDLY AVOID LEAVING A NEGATIVE REVIEW.
+
+## News and Changelog
+
+V1.0.6
+
+- Reviews display fix on frontend and sync fix.
 
 ## 🔥 Features 🔥
 
