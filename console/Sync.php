@@ -100,7 +100,7 @@ if ($scriptNodeList->length > 0) {
             $r->title = $review['title'];
             $r->date = Carbon::parse($review['dates']['experiencedDate']);
             $r->text = $review['text'];
-            $r->visible = true;
+
             $r->rating = $review['rating'];
             $r->language = $review['language'];
             $r->consumer_id = $review['consumer']['id'];
