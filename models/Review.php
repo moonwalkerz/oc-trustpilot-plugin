@@ -81,7 +81,6 @@ class Review extends Model
         ], $options));
 
 
-
         /*
          * Sorting
          */
@@ -106,6 +105,11 @@ class Review extends Model
 
 
         return $query->paginate($perPage, $page);
+    }
+
+    public function scopeIsVisible($query)
+    {
+        return $query->where('visible', 1);
     }
 
     public function getRatingStarsAttribute() {

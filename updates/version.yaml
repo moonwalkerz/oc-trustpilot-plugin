@@ -11,4 +11,5 @@ v1.0.4:
 v1.0.5:
     - 'Updated table moonwalkerz_trustpilot_reviews'
     - builder_table_update_moonwalkerz_trustpilot_reviews_3.php
-
+v1.0.6:
+    - 'Visibility of the reviews fixed and maintained during the update'

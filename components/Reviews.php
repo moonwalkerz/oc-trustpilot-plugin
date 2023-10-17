@@ -132,7 +132,7 @@ class Reviews extends ComponentBase
     protected function listReviews()
     {
        
-        $reviews = Review::listFrontEnd([
+        $reviews = Review::isVisible()->listFrontEnd([
             'page'       => $this->property('pageNumber'),
             'sort'       => $this->property('sortOrder'),
             'perPage'    => $this->property('reviewsPerPage'),
